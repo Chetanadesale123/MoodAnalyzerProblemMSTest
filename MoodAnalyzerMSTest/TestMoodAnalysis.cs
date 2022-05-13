@@ -23,11 +23,31 @@ namespace MoodAnalyzerMSTest
         }
         [TestMethod]
         [DataRow("null")]
-        public void GivenNullInput_WhenTestMoodAnalysis_shouldReturnHappy(string message)
+        public void GivenNullInput_WhenTestMoodAnalysis_shouldThrowMoodAnalysisException(string message)
         {
-            MoodAnalyzer moodAnalysis = new MoodAnalyzer(message);
-            string mood = moodAnalysis.AnalyseMethod();
-            Assert.AreEqual(mood, "happy");
+            try
+            {
+                MoodAnalyzer moodAnalysis = new MoodAnalyzer(null);
+                string mood = moodAnalysis.AnalyseMethod();
+            }
+            catch (MoodAnalyzerException ex)
+            {
+                Assert.AreEqual(ex.Message, "message is null");
+            }
+        }
+        [TestMethod]
+        [DataRow("")]
+        public void GivenEmptyInput_WhenTestMoodAnalysis_shouldThrowMoodAnalysisException(string message)
+        {
+            try
+            {
+                MoodAnalyzer moodAnalysis = new MoodAnalyzer("");
+                string mood = moodAnalysis.AnalyseMethod();
+            }
+            catch (MoodAnalyzerException ex)
+            {
+                Assert.AreEqual(ex.Message, "message is Empty");
+            }
         }
     }
 }
