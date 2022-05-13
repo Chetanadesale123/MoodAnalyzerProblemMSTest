@@ -2,7 +2,12 @@
 {
     public class MoodAnalyzer
     {
-        public string AnalyseMethod(string message)
+        string message;
+        public MoodAnalyzer(string message)
+        {
+            this.message = message;
+        }
+        public string AnalyseMethod()
         {
             if (message.ToLower().Contains("sad"))
             {
