@@ -9,11 +9,19 @@
         }
         public string AnalyseMethod()
         {
-            if (message.ToLower().Contains("sad"))
+            try
             {
-                return "sad";
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "sad";
+                }
+                return "happy";
+
             }
-            return "happy";
+            catch (Exception ex)
+            {
+                return "happy";
+            }
         }
     }
 }
