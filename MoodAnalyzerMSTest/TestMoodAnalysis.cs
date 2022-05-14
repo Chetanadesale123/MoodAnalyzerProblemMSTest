@@ -55,9 +55,6 @@ namespace MoodAnalyzerMSTest
             object expected = new MoodAnalyzer();
             object obj = MoodAnalyserFactory.CreateMoodAnalysis("MoodAnalyzerProblemMSTest.MoodAnalyzer", "MoodAnalyzer");
             expected.Equals(obj);
-
-
-
         }
     }
 }
